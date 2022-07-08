@@ -1,0 +1,137 @@
+class Solution
+{
+    static int partition(int arr[], int low, int high)
+    {
+        int pivot = arr[high];
+        int i = (low-1); // index of smaller element
+        for (int j=low; j<high; j++)
+        {
+            // If current element is smaller than or
+            // equal to pivot
+            if (arr[j] <= pivot)
+            {
+                i++;
+ 
+                // swap arr[i] and arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+ 
+        // swap arr[i+1] and arr[high] (or pivot)
+        int temp = arr[i+1];
+        arr[i+1] = arr[high];
+        arr[high] = temp;
+ 
+        return i+1;
+    }
+ 
+ 
+    /* The main function that implements QuickSort()
+      arr[] --> Array to be sorted,
+      low  --> Starting index,
+      high  --> Ending index */
+    static int[] sort(int arr[], int low, int high)
+    {
+        if (low < high)
+        {
+            /* pi is partitioning index, arr[pi] is
+              now at right place */
+            int pi = partition(arr, low, high);
+ 
+            // Recursively sort elements before
+            // partition and after partition
+            sort(arr, low, pi-1);
+            sort(arr, pi+1, high);
+        }
+        
+        return arr;
+    }
+    //Function to find the smallest positive number missing from the array.
+    static int missingNumber(int arr[], int size)
+    {
+        // Your code here
+        // this don't work
+        // int a[] = new int[size];
+        // a = sort(arr,0,size-1);
+        
+        // int index = -1;
+        // for(int i =0;i<size;i++){
+        //     if(a[i]>0){
+        //         index = i;
+        //         break;
+        //     }
+        // }
+        // if(index == -1){
+        //     return 1;
+        // }
+        // // if(a[index]>0 && a[index]>1){
+        // //     return 1;
+        // // }
+        // // // System.out.println("index = "+index);
+        // // for(int i = index;i<size-1;i++){
+        // //     if(a[i+1] != a[i]+1){
+        // //         return a[i]+1;
+        // //     }
+        // // }
+        // int count = 1;
+        // for(int i = index;i < size;i++){
+        //     if(a[i] != count){
+        //         return count;
+        //     }else{
+        //         count++;
+        //     }
+        // }
+        // return a[size-1]+1;
+        
+        
+        
+        //By hashing
+        
+        // HashSet<Integer> hs = new HashSet<>();
+        // for(int i = 0;i<size;i++){
+        //     if(arr[i] >0){
+        //         hs.add(arr[i]);
+        //     }
+        // }
+        // int count = 1;
+        // for(int i = 0;i<hs.size();i++){
+        //     if(!hs.contains(count)){
+        //         return count;
+        //     }else{
+        //         count++;
+        //     }
+        // }
+        // return count;
+        
+        
+        
+        //simple solution using two loops but not efficient as of time ccomplecity
+        
+        // for(int i = 1;i <= size; i++){
+        //     int element=i;
+        //     int flag = 0;
+        //     for(int j = 0;j<size;j++){
+        //         if(arr[j]==element){
+        //             flag = 1;
+        //             break;
+        //         }
+        //     }
+        //     if(flag != 1){
+        //         return element;
+        //     }
+        // }
+        // return arr[size-1]+1;
+        
+        int nums[] = new int[size];
+        nums = sort(arr,0,size-1);
+        int ans = 1;
+        for (int i = 0; i < size; i++) {
+            if (nums[i] == ans)
+            ans++;
+        }
+        return ans;
+        
+    }
+}
