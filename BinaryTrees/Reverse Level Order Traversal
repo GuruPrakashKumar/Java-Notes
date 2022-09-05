@@ -1,0 +1,60 @@
+//Given a binary tree of size N, find its reverse level order traversal.
+//ie- the traversal must begin from the last level.
+//link for this question : https://practice.geeksforgeeks.org/problems/reverse-level-order-traversal/1
+
+/*
+Your Task: 
+You dont need to read input or print anything.
+Complete the function reverseLevelOrder() which takes the root of the tree as input parameter 
+and returns a list containing the reverse level order traversal of the given tree.
+*/
+//source code : 
+/* 
+class Node
+{
+    int data;
+    Node left, right;
+
+    Node(int item)
+    {
+        data = item;
+        left = right = null;
+    }
+}
+*/
+
+class Tree
+{
+    public int height(Node root){
+        if(root==null){
+            return 0;
+        }
+        int ll = height(root.left);
+        int rl = height(root.right);
+        return Math.max(ll,rl)+1;
+    }
+    ArrayList<Integer> arr = new ArrayList<>();
+    public void printGivenLevel(Node root,int level){
+        if(root == null){
+            return;
+        }
+        if(level==1){
+            arr.add(root.data);
+        }
+        printGivenLevel(root.left,level-1);
+        printGivenLevel(root.right,level-1);
+    }
+    public void trav(Node root){
+        int h = height(root);
+        for(int i = h;i>=1;i--){
+            printGivenLevel(root,i);
+        }
+    }
+    public ArrayList<Integer> reverseLevelOrder(Node node) 
+    {
+        // code here
+        trav(node);
+        return arr;
+        
+    }
+}      
