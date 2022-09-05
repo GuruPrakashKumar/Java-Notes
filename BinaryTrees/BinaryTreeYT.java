@@ -136,6 +136,18 @@ public class BinaryTreeYT {
         return diam;
 
     }
+    public static void printKthLevelNodes(Node root,int level){
+        if(root==null){
+            return;
+        }
+        if(level==1){
+            System.out.print(root.data+" ");
+            return;
+        }
+            printKthLevelNodes(root.left, level-1);
+            printKthLevelNodes(root.right, level-1);
+        
+    }
     static class TreeInfo{
         int ht;
         int diam;
@@ -219,6 +231,9 @@ public class BinaryTreeYT {
 
         int diameter2OfTree = diameter2(root).diam;
         System.out.println("Diameter2 of tree is = "+diameter2OfTree);
+        
+        System.out.println("\n3rd level nodes are : ");
+        printKthLevelNodes(root, 3);
 
         // int subtree[] = {1,2,4,-1,-1,5,-1,-1};
         // tree.setterIdx();
