@@ -199,6 +199,49 @@ public class BinaryTreeYT {
         }   
         return isSubtree(root.left,subRoot)||isSubtree(root.right,subRoot);
     }
+    /*Given the root of a binary tree, return the level order traversal of its nodes' values. 
+    (i.e., from left to right, level by level).
+    Leetcode question : 102. Binary Tree Level Order Traversal
+    */
+    public static List<List<Integer>> l = new ArrayList<>();
+    public static void lo(Node root){
+        if(root==null){
+            return;
+        }
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        List<Integer> l1 = new ArrayList<>();
+        while(!q.isEmpty()){
+            Node currNode = q.remove();
+            
+            if(currNode!=null){
+                l1.add(currNode.data);
+            }
+            if(currNode == null){
+                if(q.isEmpty()){
+                    l.add(l1);
+                    break;
+                }else{
+                    l.add(l1);
+                    l1 = new ArrayList<>();
+                    q.add(null);
+                    
+                }
+            }else{
+                if(currNode.left != null){
+                    q.add(currNode.left);
+                }
+                if(currNode.right!=null){
+                    q.add(currNode.right);
+                }
+            }
+        }
+    }
+    public static List<List<Integer>> levelOrder(Node root) {
+        lo(root);
+        return l;
+    }
     public static void main(String[] args) {
         int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
 
@@ -234,7 +277,11 @@ public class BinaryTreeYT {
         
         System.out.println("\n3rd level nodes are : ");
         printKthLevelNodes(root, 3);
-
+        
+        List<List<Integer>> l2 = new ArrayList<>();
+        l2 = levelOrder(root);
+        System.out.println("\n level order traversal : ");
+        System.out.println(l2);
         // int subtree[] = {1,2,4,-1,-1,5,-1,-1};
         // tree.setterIdx();
         // System.out.println("idx value = "+tree.getterIdx());
