@@ -1,0 +1,36 @@
+/*
+Given a Binary Tree, convert it into its mirror.
+problem link : https://practice.geeksforgeeks.org/problems/mirror-tree/1
+*/
+//solution:
+
+class Solution {
+    public static Node m(Node node){
+        if(node == null){
+            return null;
+        }
+        if(node.left!=null && node.right!=null){
+            Node temp = node.left;
+            node.left = node.right;
+            node.right = temp;
+        }else if(node.left !=null){
+            node.right = node.left;
+            node.left = null;
+        }else if(node.right != null){
+            node.left = node.right;
+            node.right = null;
+        }
+        node.left = m(node.left);
+        node.right = m(node.right);
+        
+        return node;
+    }
+    // Function to convert a binary tree into its mirror tree.
+    void mirror(Node node) {
+        // Your code here
+        
+        node = m(node);
+        
+        
+    }
+}
