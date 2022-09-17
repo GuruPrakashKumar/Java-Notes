@@ -1,0 +1,70 @@
+/*
+Given a Binary Tree, print Left view of it.
+Left view of a Binary Tree is set of nodes visible when tree is visited from Left side.
+The task is to complete the function leftView(), which accepts root of the tree as argument.
+
+link of this question :https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1
+
+i used level order traversal logic and just added a flag that will keep track that previous deleted node is null and if it is then it will add the node data to arraulist
+this means i added the first node data of every line in level order traversal
+*/
+/* A Binary Tree node
+class Node
+{
+    int data;
+    Node left, right;
+
+    Node(int item)
+    {
+        data = item;
+        left = right = null;
+    }
+}*/
+
+class Tree
+{
+    public static void lv(Node root,ArrayList<Integer> arr){
+        if(root == null){
+            return;
+        }
+       Queue<Node> q = new LinkedList<>();
+       q.add(root);
+       arr.add(root.data);
+       q.add(null);
+       boolean flag = false;
+       while (!q.isEmpty()) {
+            Node currNode = q.remove();
+            if(flag == true){
+                arr.add(currNode.data);
+                flag = false;
+            }
+            if(currNode == null){
+                flag = true;
+                if(q.isEmpty()){
+                    break;
+                }else{
+                    // System.out.println();
+                    q.add(null);
+                }
+            }else{
+                // System.out.print(currNode.data+" ");
+                if(currNode.left!=null){
+                    q.add(currNode.left);
+                }
+                if(currNode.right!=null){
+                    q.add(currNode.right);
+                }
+            }
+       }
+    }
+   
+    //Function to return list containing elements of left view of binary tree.
+    ArrayList<Integer> leftView(Node root)
+    {
+        ArrayList<Integer> arr = new ArrayList<>();
+
+        lv(root,arr);
+
+      return arr;
+    }
+}
