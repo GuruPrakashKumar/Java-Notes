@@ -1,3 +1,11 @@
+/*
+ * It is implicitly invoked by the system
+ * The new keyword plays an important role in invoking the constructor
+ * It has no return type. It can or cannot return any value to the caller
+ * Sub-class cannot inherit parent class constructor
+ * A class can have more than one parameterized constructor. But constructors should have different parameters
+*/
+
 import java.util.*;
 
 
