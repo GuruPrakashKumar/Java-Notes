@@ -10,9 +10,6 @@ abstract class Parent{
 }
 
 class Child extends Parent{
-    public Child(){
-        System.out.println("mai child ka constructor hoon");
-    }
     @Override
     public void greet(){
         System.out.println("Good morning");
@@ -20,11 +17,6 @@ class Child extends Parent{
     @Override
     public void greet2(){
         System.out.println("Good afternoon");
-    }
-
-    @Override
-    public void seyHello(){
-        System.out.println("Hello i am child");
     }
 }
 
@@ -37,7 +29,6 @@ public class abstractClasses {
     public static void main(String[] args) {
         // Parent p = new Parent(); -- error
         Child c = new Child();
-        c.seyHello();
         // Child2 ch = new Child2(); -- error
     }    
 }
