@@ -113,6 +113,10 @@ public class strings {
         // 12)***Starts with method***
         System.out.println(name5.startsWith("Har"));//-->this method returns only boolean value
         System.out.println(name5.endsWith("Har"));//-->this method returns only boolean value
+
+        //13)***indexOf***
+        String tStr = "guruprakash";
+        System.out.println("index of up is: "+tStr.indexOf("up"));
         
     }
 }

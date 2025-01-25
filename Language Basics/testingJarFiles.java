@@ -9,5 +9,7 @@ public class testingJarFiles {
     public static void main(String[] args) {
         int a = recursion.factorial(4);
         System.out.println(a);
+        
+        recursion.main(new String[]{"args"});
     }
 }

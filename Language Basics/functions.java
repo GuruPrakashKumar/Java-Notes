@@ -1,7 +1,7 @@
 import java.util.*;
 
-public class functions{
-    public static void printMyname(String name){
+class functions{
+    static void printMyname(String name){
         System.out.println(name);
         return;
     }

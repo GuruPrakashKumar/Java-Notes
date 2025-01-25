@@ -12,6 +12,7 @@ public class recursion {
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("hello this is factorial class");
         System.out.print("Enter your value : ");
         int n = sc.nextInt();
         System.out.println(factorial(n));
