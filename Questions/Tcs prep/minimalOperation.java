@@ -1,5 +1,5 @@
 import java.util.*;
-public class sol {  
+public class minimalOperation {  
     public static List<Integer> minimalOperations(List<String> words) {
         List<Integer> result = new ArrayList<>();
         for (String word : words) {

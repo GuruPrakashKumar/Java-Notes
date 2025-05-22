@@ -9,6 +9,7 @@ public class lcm {
         return (a*b)/gcd(a, b);
     }
     public static void main(String[] args) {
-        System.out.println(getLcm(10, 15));
+        // System.out.println(getLcm(10, 15));
+        System.out.println(gcd(-81, -153));
     }
 }

@@ -13,17 +13,22 @@ public class FibonacciSeries {
         int a2 = fibonacciRec(n-2);
         return a1+a2;
     }
+
+    //using DP
     public static int fibDP(int n){
+        int dp[] = new int[n+1];
+        return fibDP(n, dp);
+    }
+    public static int fibDP(int n, int dp[]){
         if(n<=1) return n;
 
-        int dp[] = new int[n+1];
         if(dp[n] != 0){
             return dp[n];
         }else{
             // int a = fibDP(n-1);
             // int b = fibDP(n-2);
             // int sum = a+b;
-            return dp[n] = fibDP(n-1)+fibDP(n-2);
+            return dp[n] = fibDP(n-1, dp)+fibDP(n-2, dp);
         }
     }
     public static void main(String[] args) {
